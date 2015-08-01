@@ -7,7 +7,7 @@
     <artifactId>webservice-springboot</artifactId>
     <version>0.1-${buildNumber}</version>
     <packaging>jar</packaging>
-    <name>Spring Boot Docker</name>
+    
     <description>Getting started with Spring Boot and Docker</description>
 
     <parent>

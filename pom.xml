@@ -43,6 +43,8 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
+					<serverId>docker-hub</serverId>
+                    <registryUrl>${docker.registry.url}</registryUrl>
 				</configuration>
 			</plugin>
         </plugins>

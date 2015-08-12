@@ -11,7 +11,7 @@ public class Application {
 
 	@RequestMapping("/")
 	public String home() {
-		return "Finally, you get "+System.getenv("PRICE")+" !";
+		return "Hey, you get "+System.getenv("PRICE")+" !";
 	}
 
 

@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.alexkrieg</groupId>
-    <artifactId>webservice-springboot</artifactId>
-    <version>0.1-${buildNumber}</version>
-    <packaging>jar</packaging>
-    
-    <description>Getting started with Spring Boot and Docker</description>
+	<groupId>de.alexkrieg</groupId>
+	<artifactId>webservice-springboot</artifactId>
+	<version>0.1-${buildNumber}</version>
+	<packaging>jar</packaging>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.5.RELEASE</version>
-        <relativePath/>
-    </parent>
+	<description>Getting started with Spring Boot and Docker</description>
 
-    <properties>
-    	<docker.image.prefix>alitari</docker.image.prefix>
-        <java.version>1.8</java.version>
-    </properties>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.5.RELEASE</version>
+		<relativePath />
+	</parent>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+	<properties>
+		<docker.image.prefix>alitari</docker.image.prefix>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>smartbear-sweden-plugin-repository</id>
+			<url>http://www.soapui.org/repository/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+	<build>
+		<plugins>
 			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.2.12</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.redfish4ktc.soapui</groupId>
+				<artifactId>maven-soapui-extension-plugin</artifactId>
+				<version>4.6.4.2</version>
 				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
-					<baseImage>java:8</baseImage>
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-					<resources>
-						<resource>
-							<targetPath></targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-					<serverId>docker-hub</serverId>
-                    <registryUrl>${docker.registry.url}</registryUrl>
+					<projectFile>target/test-classes/soapui/webservice-springboot-soapui-project.xml</projectFile>
+					<junitReport>true</junitReport>
+					<exportwAll>true</exportwAll>
+					<printReport>false</printReport>
+					<outputFolder>target/soapui</outputFolder> 
+					<soapuiProperties>
+						<property>
+							<name>soapui.properties</name>
+							<value>target/test-classes/soapui/webservice-springboot-soapui.properties</value>
+						</property>
+					</soapuiProperties>
 				</configuration>
 			</plugin>
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 </project>

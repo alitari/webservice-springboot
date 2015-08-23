@@ -40,7 +40,7 @@ sonar-db:
    - /etc/postgres/sonar/data:/var/lib/postgresql/data
 
 jenkins:
-  image: jenkins
+  build: jenkins
   user: root
   ports:
    - "8180:8080" 

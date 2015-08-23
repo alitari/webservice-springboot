@@ -46,6 +46,6 @@ jenkins:
    - "8180:8080" 
    - "50000:50000"
   volumes:
-   - /etc/jenkins_home:/var/jenkins_home jenkins
+   - /etc/jenkins_home:/var/jenkins_home
     
  

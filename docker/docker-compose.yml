@@ -1,23 +1,23 @@
-#nexus:
-#  image: sonatype/nexus
-#  ports:
-#    - "8081:8081"
-#  volumes:
-#    - /etc/nexus-data:/sonatype-work
+nexus:
+  image: sonatype/nexus
+  ports:
+    - "8081:8081"
+  volumes:
+    - /etc/nexus-data:/sonatype-work
 
-#registry:
-#  image: registry
-#  ports:
-#    - "5000:5000"
-#  volumes:
-#    - /etc/docker-registry:/tmp/registry-dev
+registry:
+  image: registry
+  ports:
+    - "5000:5000"
+  volumes:
+    - /etc/docker-registry:/tmp/registry-dev
 
-#registry-ui:
-#  image: atcol/docker-registry-ui
-#  ports:
-#    - "8080:8080"
-#  environment:
-#    - REG1=http://192.168.0.16:5000/v1/
+registry-ui:
+  image: atcol/docker-registry-ui
+  ports:
+    - "8080:8080"
+  environment:
+    - REG1=http://192.168.0.16:5000/v1/
 
 
 
@@ -43,9 +43,12 @@ jenkins:
   build: jenkins
   user: root
   ports:
-   - "8180:8080" 
+   - "8180:8080"
    - "50000:50000"
   volumes:
-   - /etc/jenkins_home:/var/jenkins_home
-    
+   - /etc/jenkins_home:/var/lib/jenkins
+  privileged: true
+  environment:
+   - DOCKER_REGISTRY_URL=192.168.0.16:5000
+
  

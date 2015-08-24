@@ -1,3 +1,2 @@
 FROM killercentury/docker-jenkins-dind
-# COPY plugins.txt /usr/share/jenkins/plugins.txt
-# RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+ENV DOCKER_DAEMON_ARGS="--insecure-registry 192.168.0.16:5000"

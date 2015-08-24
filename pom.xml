@@ -28,12 +28,12 @@
 			<url>http://www.soapui.org/repository/maven2/</url>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<distributionManagement>
-	    <repository>
-          <id>releases</id>
-          <url>http://192.168.0.16:8081/content/repositories/releases/</url>
-       </repository>
+		<repository>
+			<id>releases</id>
+			<url>http://192.168.0.16:8081/content/repositories/releases/</url>
+		</repository>
 	</distributionManagement>
 
 
@@ -64,6 +64,15 @@
 						<globalProperty>wsport=${integrationtest.port}</globalProperty>
 					</globalProperties>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

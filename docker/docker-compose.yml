@@ -20,8 +20,6 @@ registry-ui:
     - REG1=http://192.168.0.16:5000/v1/
 
 
-
-
 sonarqube:
   image: sonarqube:5.1
   ports:

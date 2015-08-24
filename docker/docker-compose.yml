@@ -48,5 +48,14 @@ jenkins:
   privileged: true
   environment:
    - DOCKER_REGISTRY_URL=192.168.0.16:5000
-
+   
+cadvisor:
+  image: google/cadvisor:latest
+  ports:
+    -"8380:8080"
+  volumes:
+  - /:/rootfs:ro 
+  - /var/run:/var/run:rw
+  - /sys:/sys:ro
+  - /var/lib/docker/:/var/lib/docker:ro
  

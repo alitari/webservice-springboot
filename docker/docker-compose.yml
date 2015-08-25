@@ -48,6 +48,8 @@ jenkins:
   privileged: true
   environment:
    - DOCKER_REGISTRY_URL=192.168.0.16:5000
+  extra_hosts:
+    - "nexus:192.168.0.16"
    
 cadvisor:
   image: google/cadvisor:latest

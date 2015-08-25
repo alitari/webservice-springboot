@@ -64,15 +64,7 @@
 						<globalProperty>wsport=${integrationtest.port}</globalProperty>
 					</globalProperties>
 				</configuration>
-				<executions>
-					<execution>
-						<id>start</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
+				
 			</plugin>
 		</plugins>
 	</build>

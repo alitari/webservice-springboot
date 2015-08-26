@@ -1,2 +1,2 @@
 FROM killercentury/jenkins-dind
-ENV DOCKER_DAEMON_ARGS="--insecure-registry 192.168.0.16:5000"
+ENV DOCKER_DAEMON_ARGS="--insecure-registry registry:5000"

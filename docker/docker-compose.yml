@@ -21,6 +21,16 @@ registry-ui:
   environment:
     - REG1=http://registry:5000/v1/
 
+registry-frontend:
+  image: konradkleine/docker-registry-frontend
+  links:
+    - registry:registry
+  environment:
+    - ENV_DOCKER_REGISTRY_HOST=registry
+    - ENV_DOCKER_REGISTRY_PORT=5000
+  ports:
+    - "8580:80"
+
 sonarqube:
   image: sonarqube:5.1
   ports:

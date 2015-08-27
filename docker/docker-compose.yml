@@ -47,6 +47,7 @@ jenkins:
    - "50000:50000"
   volumes:
    - /etc/jenkins_home:/var/lib/jenkins
+   - /etc/docker_jenkins:/var/lib/docker
   privileged: true
   extra_hosts:
    - "registry:192.168.0.16"

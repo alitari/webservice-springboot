@@ -40,7 +40,7 @@ sonar-db:
    - /etc/postgres/sonar/data:/var/lib/postgresql/data
 
 jenkins:
-  image: killercentury/jenkins-dind
+  image: docker_jenkins
   user: root
   ports:
    - "8180:8080"
@@ -48,11 +48,11 @@ jenkins:
   environment: 
    - DOCKER_DAEMON_ARGS="--insecure-registry registry:5000"
   volumes:
-   - /etc/jenkins_home:/var/lib/jenkins   
+   - /etc/jenkins_home:/var/lib/jenkins
   privileged: true
   extra_hosts:
    - "registry:192.168.0.16"
-   
+
 cadvisor:
   image: google/cadvisor:latest
   ports:

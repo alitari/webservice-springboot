@@ -14,13 +14,12 @@ registry:
 
 registry-ui:
   image: atcol/docker-registry-ui
+  links: 
+    - registry:registry
   ports:
     - "8080:8080"
   environment:
     - REG1=http://registry:5000/v1/
-  extra_hosts:
-   - "registry:192.168.0.16"
-
 
 sonarqube:
   image: sonarqube:5.1

@@ -40,13 +40,11 @@ sonar-db:
    - /etc/postgres/sonar/data:/var/lib/postgresql/data
 
 jenkins:
-  image: docker_jenkins
+  build: jenkins
   user: root
   ports:
    - "8180:8080"
    - "50000:50000"
-  environment: 
-   - DOCKER_DAEMON_ARGS="--insecure-registry registry:5000"
   volumes:
    - /etc/jenkins_home:/var/lib/jenkins
   privileged: true

@@ -10,7 +10,7 @@ registry:
   ports:
     - "5000:5000"
   volumes:
-    - /etc/docker-registry:/tmp/registry-dev
+    - /etc/docker-registry:/var/lib/registry
 
 registry-ui:
   image: atcol/docker-registry-ui
@@ -51,6 +51,8 @@ sonar-db:
 jenkins:
   build: jenkins
   user: root
+  links:
+   - registry:registry
   ports:
    - "8180:8080"
    - "50000:50000"
@@ -58,8 +60,7 @@ jenkins:
    - /etc/jenkins_home:/var/lib/jenkins
    - /etc/docker_jenkins:/var/lib/docker
   privileged: true
-  extra_hosts:
-   - "registry:192.168.0.16"
+
 
 cadvisor:
   image: google/cadvisor:latest

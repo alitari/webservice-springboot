@@ -101,7 +101,7 @@
 		        </configuration>
 	        </plugin>
 
-	// integrate maven-cobertura-plugin to project site 
+	<!-- integrate maven-cobertura-plugin to project site --> 
 	       <plugin>
 	         	<groupId>org.codehaus.mojo</groupId>
 		        <artifactId>cobertura-maven-plugin</artifactId>

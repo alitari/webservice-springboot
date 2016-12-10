@@ -1,0 +1,17 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: maven    
+
+inputs:
+- name: webservice-springboot
+
+run:
+  path: mvn
+  args: 
+  - -f
+  - webservice-springboot
+  - clean

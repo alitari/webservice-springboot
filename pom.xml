@@ -1,42 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>de.alexkrieg</groupId>
 	<artifactId>webservice-springboot</artifactId>
 	<version>0.1-${buildNumber}</version>
 	<packaging>jar</packaging>
-
 	<description>Getting started with Spring Boot and Docker</description>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.5.RELEASE</version>
 		<relativePath />
 	</parent>
-
 	<properties>
 		<docker.image.prefix>alitari</docker.image.prefix>
 		<java.version>1.8</java.version>
 	</properties>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>smartbear-sweden-plugin-repository</id>
-			<url>http://www.soapui.org/repository/maven2/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<url>http://docker_nexus_1:8081/content/repositories/releases/</url>
-		</repository>
-	</distributionManagement>
-
-
 	<build>
 		<plugins>
 			<plugin>
@@ -44,40 +25,21 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>com.github.redfish4ktc.soapui</groupId>
-				<artifactId>maven-soapui-extension-plugin</artifactId>
-				<version>4.6.4.2</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
 				<configuration>
-					<projectFile>target/test-classes/soapui/webservice-springboot-soapui-project.xml</projectFile>
-					<junitReport>true</junitReport>
-					<exportwAll>true</exportwAll>
-					<printReport>false</printReport>
-					<outputFolder>target/soapui</outputFolder>
-					<soapuiProperties>
-						<property>
-							<name>soapui.properties</name>
-							<value>target/test-classes/soapui/webservice-springboot-soapui.properties</value>
-						</property>
-					</soapuiProperties>
-					<globalProperties>
-						<globalProperty>wshost=${integrationtest.host}</globalProperty>
-						<globalProperty>wsport=${integrationtest.port}</globalProperty>
-					</globalProperties>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
-				
 			</plugin>
 			<plugin>
-                                <groupId>org.apache.maven.plugins</groupId>
-                                <artifactId>maven-compiler-plugin</artifactId>
-                                <version>3.5.1</version>
-                                <configuration>
-                                        <source>1.7</source>
-                                        <target>1.7</target>
-                                </configuration>
-                        </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -90,31 +52,33 @@
 		</dependency>
 	</dependencies>
 	<reporting>
-               <plugins>
-	<!-- Normally, we take off the dependency report, saves time. -->
-        	<plugin>
-        		<groupId>org.apache.maven.plugins</groupId>
-        		<artifactId>maven-project-info-reports-plugin</artifactId>
-	        	<version>2.7</version>
-		        <configuration>
-	        		<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-		        </configuration>
-	        </plugin>
-
-	<!-- integrate maven-cobertura-plugin to project site --> 
-	       <plugin>
-	         	<groupId>org.codehaus.mojo</groupId>
-		        <artifactId>cobertura-maven-plugin</artifactId>
-		        <version>2.6</version>
-		        <configuration>
-			<formats>
-				<format>html</format>
-				<format>xml</format>
-			</formats>
-		       </configuration>
-	       </plugin>
-
-   </plugins>
-</reporting>
-
+		<plugins>
+			<!-- Normally, we take off the dependency report, saves time. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.19.1</version>
+			</plugin>
+			<!-- integrate maven-cobertura-plugin to project site -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

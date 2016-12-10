@@ -1,4 +1,0 @@
-Jenkins Docker Credentials: Copy  FileContent of docker-machine machine directorties.
-clientKey: key.pem
-Client Certificate: sert.pem
-Server CA Certificate: ca.pem

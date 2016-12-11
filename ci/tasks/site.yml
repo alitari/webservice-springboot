@@ -4,7 +4,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: maven    
+    repository: alitari/webservice-springboot-buildimage    
 
 inputs:
 - name: webservice-springboot

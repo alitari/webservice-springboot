@@ -12,6 +12,9 @@ inputs:
 run:
   path: mvn
   args: 
+  - -X
   - -f
   - webservice-springboot
-  - clean
+  - -s 
+  - /usr/share/maven/ref/settings-docker.xml
+  - site

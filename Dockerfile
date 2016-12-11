@@ -1,4 +1,2 @@
 FROM maven
-COPY pom.xml /tmp/pom.xml
-#RUN mvn -X -B -f /tmp/pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve dependency:resolve-plugins
-RUN mvn -X -B -f /tmp/pom.xml -s /usr/share/maven/ref/settings-docker.xml archetype:generate
+RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml clean site

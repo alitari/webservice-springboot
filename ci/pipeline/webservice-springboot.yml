@@ -1,0 +1,23 @@
+resources:
+- name: webservice-springboot
+  type: git
+  source:
+    uri: https://github.com/alitari/webservice-springboot.git
+    branch: master
+
+- name: webservice-springboot-buildimage
+  type: docker-image
+  source:
+    email: {{docker-hub-email}}
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: {{docker-hub-image}}
+
+jobs:
+- name: job-publish
+  public: true
+  serial: true
+  plan:
+  - get: webservice-springboot
+  - put: webservice-springboot-buildimage
+    params: { build: webservice-springboot, cache: false }

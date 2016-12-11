@@ -2,3 +2,4 @@
 .settings
 .classpath
 .jdk8
+credentials.yml

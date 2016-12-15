@@ -1,0 +1,15 @@
+{
+    "remotePath": "./",
+    "host": "192.168.0.87",
+    "username": "alitari",
+    "port": 22,
+    "protocol": "sftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": "c:/Users/Alexander/rv515.rsa",
+    "ignore": [
+        "\\.vscode",
+        "\\.git"
+    ]
+}

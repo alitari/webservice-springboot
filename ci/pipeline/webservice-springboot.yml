@@ -14,10 +14,16 @@ resources:
     repository: {{docker-hub-image}}
 
 jobs:
-- name: job-publish
+- name: publish-buildimage
   public: true
   serial: true
   plan:
   - get: webservice-springboot
   - put: webservice-springboot-buildimage
     params: { build: webservice-springboot, cache: false }
+
+- name: build
+  plan:
+  - get: webservice-springboot
+  - task: maven-site
+    file: webservice-springboot/ci/tasks/site.yml

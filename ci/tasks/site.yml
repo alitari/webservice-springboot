@@ -13,4 +13,6 @@ outputs:
 - name: webservice-springboot-target
 
 run:
-  path: webservice-springboot/ci/scripts/site.sh
+  path: /bin/bash
+  args: 
+  - webservice-springboot/ci/scripts/site.sh
